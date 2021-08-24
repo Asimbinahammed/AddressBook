@@ -8,37 +8,32 @@ public class AddressBookSystem {
 	 * scanning details from user
 	 */
 	public static void main(String[] args) {
-		Scanner sdc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 	    System.out.print("Enter firstname");
-	    String fname = sdc.nextLine();
+	    String fname = sc.nextLine();
 	    
-	    Scanner sdcq = new Scanner(System.in);
 	    System.out.print("Enter Last name");
-	    String lname = sdcq.nextLine();
+	    String lname = sc.nextLine();
 	    
-	    Scanner sdcz = new Scanner(System.in);
 	    System.out.print("Enter address");
-	    String address = sdcz.nextLine();
+	    String address = sc.nextLine();
 	    
-	    Scanner sdcx = new Scanner(System.in);
 	    System.out.print("Enter City");
-	    String city = sdcx.nextLine();
+	    String city = sc.nextLine();
 	    
-	    Scanner sdcc = new Scanner(System.in);
 	    System.out.print("Enter state");
-	    String state = sdcc.nextLine();
+	    String state = sc.nextLine();
 	    
-	    Scanner sdcv = new Scanner(System.in);
 	    System.out.print("Enter zip");
-	    String zip = sdcv.nextLine();
+	    int zip = sc.nextInt();
 	    
-	    Scanner sdcb = new Scanner(System.in);
 	    System.out.print("Enter phone number");
-	    String Phno = sdcb.nextLine();
+	    Long Phno = sc.nextLong();
 	    
-	    Scanner sdnc = new Scanner(System.in);
 	    System.out.print("Enter Email");
-	    String email = sdnc.nextLine();
+	    String email = sc.nextLine();
+	    
+	    
 	}
 
 }
