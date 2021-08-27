@@ -58,18 +58,50 @@ public class AddressBook {
 		}
 
 	}
+	
+	//delete person
+	public void deletePerson(String firstName, String lastName) {
+		if (firstName.equals(person.getFirstName()) && lastName.equals(person.getLastName())) {
+			person = null;
+			System.out.println(person);
+			System.out.println("Contact Deleted successfully\n");
+		}
+		else {
+			System.out.println(person);
+			System.out.println("firstname and lastname didnt match");
+		}
+
+	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book");
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		String firstName, lastName;
 
 		AddressBook address = new AddressBook();
 		address.addPerson();
-
-		System.out.print("Enter first name and last name of the person to edit the contact: ");
-		firstName = input.next();
-		lastName = input.next();
-		address.editPerson(firstName, lastName);
+		
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+	    System.out.print("Enter 1 for editing or ");
+	    System.out.print("Enter 2 for Deleting ");
+	    System.out.println();
+	    int x = sc.nextInt();
+	    if(x==1) {
+	    	System.out.print("Enter first name and last name of the person to edit the contact: ");
+			firstName = input.next();
+			lastName = input.next();
+			address.editPerson(firstName, lastName);
+	    }
+	    else if(x==2) {
+	    	System.out.print("Enter first name and last name of the person to delete the contact: ");
+			firstName = input.next();
+			lastName = input.next();
+			address.deletePerson(firstName, lastName);
+	    }else {
+	    	System.out.println("NOT DEFINED!!");
+	    }
+		
 	}
 }
