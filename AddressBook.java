@@ -1,12 +1,12 @@
 package bridgelabz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBook {
 
 	Scanner scanner = new Scanner(System.in);
-	PersonInfo person;
 	ArrayList<PersonInfo> contact;
 
 	// declaring array list
@@ -16,7 +16,6 @@ public class AddressBook {
 
 	// add new person
 	public void addPerson() {
-
 		System.out.print("Enter first name: ");
 		String firstName = scanner.next();
 		System.out.println("Enter the Last name: ");
@@ -34,10 +33,13 @@ public class AddressBook {
 		System.out.println("Enter email id: ");
 		String email = scanner.next();
 
-		// construct new person object
-		person = new PersonInfo(firstName, lastName, address, city, state, zip, phoneNumber, email);
-		System.out.println(person);
-		contact.add(person);
+		//construct new person object
+				PersonInfo person = new PersonInfo(firstName, lastName, address, city, state, zip, phoneNumber, email);
+				System.out.println(person);
+
+				//add PersonInfo object to arraylist
+				contact.add(person);
+				System.out.println("Contact added successfully\n");
 	}
 
 	// edit person details
@@ -76,7 +78,7 @@ public class AddressBook {
 	// delete person
 	public void deletePerson(String firstName, String lastName) {
 		for (int i = 0; i <= contact.size(); i++) {
-			PersonInfo person = (PersonInfo) contact.get(i);
+			PersonInfo person = (PersonInfo)contact.get(i);
 			if (firstName.equals(person.getFirstName()) && lastName.equals(person.getLastName())) {
 				person = null;
 				System.out.println(person);
@@ -91,6 +93,10 @@ public class AddressBook {
 	}
 
 	public static void main(String[] args) {
+		
+		 //declared new hash map for multiple address book storing
+		HashMap<String,AddressBook> addressBook=new HashMap<String,AddressBook>();
+		
 		System.out.println("Welcome to Address Book");
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
@@ -99,6 +105,11 @@ public class AddressBook {
 		AddressBook address = new AddressBook();
 
 		while (true) {
+			System.out.println("Enter name of Address Book");
+	        String addressBookName = input.next();
+	        
+	        addressBook.put(addressBookName, address);
+
 			System.out.println("Select an action..");
 			System.out.println("1. Add a person");
 			System.out.println("2. Edit information");
@@ -108,21 +119,21 @@ public class AddressBook {
 			int choice = input.nextInt();
 			switch (choice) {
 			case 1:
-				address.addPerson();
+				addressBook.get(addressBookName).addPerson();
 				System.out.println("\n");
 				break;
 			case 2:
 				System.out.print("Enter first name and last name of the person to edit the contact: ");
 				firstName = input.next();
 				lastName = input.next();
-				address.editPerson(firstName, lastName);
+				addressBook.get(addressBookName).editPerson(firstName, lastName);
 				System.out.println("\n");
 				break;
 			case 3:
 				System.out.print("Enter first and last name of the person to delete the contact: ");
 				firstName = input.next();
 				lastName = input.next();
-				address.deletePerson(firstName, lastName);
+				addressBook.get(addressBookName).deletePerson(firstName, lastName);
 				System.out.println("\n");
 				break;
 			case 4:
