@@ -5,7 +5,6 @@ package bridgelabz;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class AddressBook {
 	public static Scanner sc = new Scanner(System.in);
@@ -41,16 +40,16 @@ public class AddressBook {
 		}
 	}
 
-	// UC4 Delete PersonInfo Method
+	// UC4 Delete Contact Method
 	public static void deleteContact() {
-		System.out.println("Enter first name for Delete PersonInfo : ");
+		System.out.println("Enter first name for Delete Contact : ");
 		String firstName = sc.nextLine();
 		for (int i = 0; i < personInfo.size(); i++) {
 			if (personInfo.get(i).getFirstName().equalsIgnoreCase(firstName)) { // Comparing Two Strings
 				personInfo.remove(i); // REMOVING ARRAY
-				System.out.println("PersonInfo Deleted...");
+				System.out.println("Contact Deleted...");
 			} else {
-				System.out.println(firstName + " : No PersonInfo found in Address Book");
+				System.out.println(firstName + " : No Contact found in Address Book");
 			}
 		}
 	}
@@ -126,34 +125,14 @@ public class AddressBook {
 		}
 		return result;
 	}
-	//UC8 Ability to search Person in a City or State across the multiple AddressBook
-	public static void searchPersonByName(String firstName) {
-		List listPerson = (List) personInfo.stream()
-				.filter(p -> p.getFirstName().equals(firstName)).collect(Collectors.toList());
-		for (Object person:listPerson)
-		{
-			System.out.println(person);
-		}
-	}
-	//UC9 Ability to search Person in a City or State across the multiple AddressBook
-	public static void searchPersonByCity(String City) {
-		List listPerson = (List) personInfo.stream()
-				.filter(p -> p.getCity().equals(City)).collect(Collectors.toList());
-		for (Object person:listPerson)
-		{
-			System.out.println(person);
-		}
-	}
+
 	public static void menu() {
 		String menuOption;
 		do {
-			System.out.println("    1.Add Contact");
+			System.out.println("	1.Add Contact");
 			System.out.println("	2.Edit Contact");
 			System.out.println("	3.Delete Contact");
 			System.out.println("	4.Show Contact");
-			System.out.println("	5.Search Person Using Name");
-			System.out.println("	6.Search Person Using City");
-
 			menuOption = sc.nextLine();
 			switch (menuOption) {
 				case "1":
@@ -167,16 +146,6 @@ public class AddressBook {
 					break;
 				case "4":
 					showContact();
-					break;
-				case "5":
-					System.out.println("Enter First Name");
-					String firstname = sc.next();
-					searchPersonByName(firstname);
-					break;
-				case "6":
-					System.out.println("Enter City Name");
-					String city = sc.next();
-					searchPersonByCity(city);
 					break;
 				default:
 					System.out.println("Invalid Input");
