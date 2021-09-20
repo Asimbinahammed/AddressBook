@@ -3,7 +3,6 @@
  */
 package bridgelabz;
 
-
 import java.util.*;
 
 public class AddressBook {
@@ -38,6 +37,17 @@ public class AddressBook {
 		for (PersonInfo personInfo2 : personInfo) {
 			System.out.println(personInfo2);
 		}
+	}
+
+	//UC7 Ability to ensure there is no Duplicate Entry of the same Person
+	private static boolean checkExist(String firstName, String lastName, List<PersonInfo> personInfo) {
+		boolean result = false;
+		for (PersonInfo check : personInfo) {
+			if (firstName.equals(check.getFirstName()) && lastName.equals(check.getLastName())) {
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	// UC4 Delete Contact Method
@@ -113,17 +123,6 @@ public class AddressBook {
 			}
 		}
 
-	}
-
-	//UC7 Ability to ensure there is no Duplicate Entry of the same Person
-	private static boolean checkExist(String firstName, String lastName, List<PersonInfo> personInfo) {
-		boolean result = false;
-		for (PersonInfo check : personInfo) {
-			if (firstName.equals(check.getFirstName()) && lastName.equals(check.getLastName())) {
-				result = true;
-			}
-		}
-		return result;
 	}
 
 	public static void menu() {
