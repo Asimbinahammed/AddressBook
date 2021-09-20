@@ -54,6 +54,13 @@ public class AddressBook {
 		}
 	}
 
+	public static void showContact() {
+		for (int i = 0; i < personInfo.size(); i++) {
+			hashmap.put(personInfo.get(i).getPhoneNumber(), personInfo);
+			System.out.println(hashmap.toString());
+		}
+	}
+
 	// UC3 editContact
 	static void editContact() {
 		String enteredName;
@@ -119,12 +126,21 @@ public class AddressBook {
 		return result;
 	}
 
+	public static void searchPersonByName(String firstName) {
+		//UC8 Ability to search Person in a City or State across the multiple AddressBook
+		List listPerson = (List) personInfo.stream()
+				.filter(p -> p.getFirstName().equals(firstName)).collect(Collectors.toList());
+		System.out.println(listPerson);
+	}
+
 	public static void menu() {
 		String menuOption;
 		do {
 			System.out.println("	1.Add Contact");
 			System.out.println("	2.Edit Contact");
 			System.out.println("	3.Delete Contact");
+			System.out.println("	4.Show Contact");
+			System.out.println("	5.Search Person Using Name");
 			menuOption = sc.nextLine();
 			switch (menuOption) {
 				case "1":
@@ -136,6 +152,13 @@ public class AddressBook {
 				case "3":
 					deleteContact();
 					break;
+				case "4":
+					showContact();
+					break;
+				case "5":
+					System.out.println("Enter First Name");
+					String firstname = sc.next();
+					searchPersonByName(firstname);
 				default:
 					System.out.println("Invalid Input");
 			}
