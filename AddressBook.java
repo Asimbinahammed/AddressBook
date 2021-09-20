@@ -27,6 +27,16 @@ public class AddressBook {
 		String firstName = scanner.next();
 		System.out.println("Enter the Last name: ");
 		String lastName = scanner.next();
+		//checking for duplicate entry
+		Iterator<PersonInfo> itr = contact.iterator();
+		while(itr.hasNext()) { //iterating through each element
+			PersonInfo duplicate = itr.next();
+			if(firstName.equals(duplicate.getFirstName()) && lastName.equals(duplicate.getLastName())) {
+				System.out.println("Duplicate entry of contact");
+				UserInput(book);
+			}
+		}
+
 		System.out.print("Enter complete address: ");
 		String address = scanner.next();
 		System.out.print("Enter city: ");
@@ -40,15 +50,7 @@ public class AddressBook {
 		System.out.println("Enter email id: ");
         String email = scanner.next();
         
-        //checking for duplicate entry
-        Iterator<PersonInfo> itr = contact.iterator();
-		while(itr.hasNext()) { //iterating through each element
-			PersonInfo duplicate = itr.next();
-			if(firstName.equals(duplicate.getFirstName()) && lastName.equals(duplicate.getLastName())) {
-				System.out.println("Duplicate entry of contact");
-				UserInput(book);
-			}
-		}
+
 		PersonInfo person = new PersonInfo(firstName, lastName, address, city, state, zip, phoneNumber, email);
 		System.out.println(person);
 		contact.add(person);
