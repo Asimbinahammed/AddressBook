@@ -3,6 +3,7 @@
  */
 package bridgelabz;
 
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -125,22 +126,34 @@ public class AddressBook {
 		}
 		return result;
 	}
-
+	//UC8 Ability to search Person in a City or State across the multiple AddressBook
 	public static void searchPersonByName(String firstName) {
-		//UC8 Ability to search Person in a City or State across the multiple AddressBook
 		List listPerson = (List) personInfo.stream()
 				.filter(p -> p.getFirstName().equals(firstName)).collect(Collectors.toList());
-		System.out.println(listPerson);
+		for (Object person:listPerson)
+		{
+			System.out.println(person);
+		}
 	}
-
+	//UC9 Ability to search Person in a City or State across the multiple AddressBook
+	public static void searchPersonByCity(String City) {
+		List listPerson = (List) personInfo.stream()
+				.filter(p -> p.getCity().equals(City)).collect(Collectors.toList());
+		for (Object person:listPerson)
+		{
+			System.out.println(person);
+		}
+	}
 	public static void menu() {
 		String menuOption;
 		do {
-			System.out.println("	1.Add Contact");
+			System.out.println("    1.Add Contact");
 			System.out.println("	2.Edit Contact");
 			System.out.println("	3.Delete Contact");
 			System.out.println("	4.Show Contact");
 			System.out.println("	5.Search Person Using Name");
+			System.out.println("	6.Search Person Using City");
+
 			menuOption = sc.nextLine();
 			switch (menuOption) {
 				case "1":
@@ -159,6 +172,12 @@ public class AddressBook {
 					System.out.println("Enter First Name");
 					String firstname = sc.next();
 					searchPersonByName(firstname);
+					break;
+				case "6":
+					System.out.println("Enter City Name");
+					String city = sc.next();
+					searchPersonByCity(city);
+					break;
 				default:
 					System.out.println("Invalid Input");
 			}
