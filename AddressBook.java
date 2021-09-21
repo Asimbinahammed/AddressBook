@@ -4,6 +4,12 @@
 package bridgelabz;
 
 import java.util.*;
+<<<<<<< HEAD
+=======
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+>>>>>>> UC10_City_count
 
 public class AddressBook {
 	public static Scanner sc = new Scanner(System.in);
@@ -50,7 +56,11 @@ public class AddressBook {
 		return result;
 	}
 
+<<<<<<< HEAD
 	// UC4 Delete Contact Method
+=======
+	// UC4 Delete PersonInfo Method
+>>>>>>> UC10_City_count
 	public static void deleteContact() {
 		System.out.println("Enter first name for Delete Contact : ");
 		String firstName = sc.nextLine();
@@ -125,6 +135,38 @@ public class AddressBook {
 
 	}
 
+<<<<<<< HEAD
+=======
+	//UC8 Ability to search Person in a City or State
+	public static void searchPersonByName(String firstName) {
+		List listPerson = (List) personInfo.stream()
+				.filter(p -> p.getFirstName().equals(firstName)).collect(Collectors.toList());
+		for (Object person:listPerson)
+		{
+			System.out.println(person);
+		}
+	}
+
+	//UC9 Ability to search Person in a City or State
+	public static void searchPersonByCity(String City) {
+		List listPerson = (List) personInfo.stream()
+				.filter(p -> p.getCity().equals(City)).collect(Collectors.toList());
+		for (Object person:listPerson)
+		{
+			System.out.println(person);
+		}
+	}
+
+	//UC10 Ability to search Person in a City or State
+	public static void countByCity(String city) {
+		List listPerson = (List) personInfo.stream()
+				.filter(p -> p.getCity().equals(city))
+				.collect(Collectors.toList());
+		long total=Stream.of(listPerson).count();
+        System.out.println("Totally "+total+ " contacts present in the AddressBook");
+	}
+
+>>>>>>> UC10_City_count
 	public static void menu() {
 		String menuOption;
 		do {
@@ -132,6 +174,13 @@ public class AddressBook {
 			System.out.println("	2.Edit Contact");
 			System.out.println("	3.Delete Contact");
 			System.out.println("	4.Show Contact");
+<<<<<<< HEAD
+=======
+			System.out.println("	5.Search Person Using Name");
+			System.out.println("	6.Search Person Using City");
+			System.out.println("	7.Count person in a city");
+
+>>>>>>> UC10_City_count
 			menuOption = sc.nextLine();
 			switch (menuOption) {
 				case "1":
@@ -146,6 +195,24 @@ public class AddressBook {
 				case "4":
 					showContact();
 					break;
+<<<<<<< HEAD
+=======
+				case "5":
+					System.out.println("Enter First Name");
+					String firstname = sc.next();
+					searchPersonByName(firstname);
+					break;
+				case "6":
+					System.out.println("Enter City Name");
+					String city = sc.next();
+					searchPersonByCity(city);
+					break;
+				case "7":
+					System.out.println("Enter City Name");
+					String citys = sc.next();
+					countByCity(citys);
+					break;
+>>>>>>> UC10_City_count
 				default:
 					System.out.println("Invalid Input");
 			}
