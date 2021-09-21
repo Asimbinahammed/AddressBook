@@ -3,13 +3,11 @@
  */
 package bridgelabz;
 
+
 import java.util.*;
-<<<<<<< HEAD
-=======
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
->>>>>>> UC10_City_count
 
 public class AddressBook {
 	public static Scanner sc = new Scanner(System.in);
@@ -56,20 +54,16 @@ public class AddressBook {
 		return result;
 	}
 
-<<<<<<< HEAD
-	// UC4 Delete Contact Method
-=======
 	// UC4 Delete PersonInfo Method
->>>>>>> UC10_City_count
 	public static void deleteContact() {
-		System.out.println("Enter first name for Delete Contact : ");
+		System.out.println("Enter first name for Delete PersonInfo : ");
 		String firstName = sc.nextLine();
 		for (int i = 0; i < personInfo.size(); i++) {
 			if (personInfo.get(i).getFirstName().equalsIgnoreCase(firstName)) { // Comparing Two Strings
 				personInfo.remove(i); // REMOVING ARRAY
-				System.out.println("Contact Deleted...");
+				System.out.println("PersonInfo Deleted...");
 			} else {
-				System.out.println(firstName + " : No Contact found in Address Book");
+				System.out.println(firstName + " : No PersonInfo found in Address Book");
 			}
 		}
 	}
@@ -135,8 +129,6 @@ public class AddressBook {
 
 	}
 
-<<<<<<< HEAD
-=======
 	//UC8 Ability to search Person in a City or State
 	public static void searchPersonByName(String firstName) {
 		List listPerson = (List) personInfo.stream()
@@ -166,21 +158,23 @@ public class AddressBook {
         System.out.println("Totally "+total+ " contacts present in the AddressBook");
 	}
 
->>>>>>> UC10_City_count
+	//UC11 Ability to sort name
+	public static void sortName(String name) {
+	//
+	}
+
 	public static void menu() {
 		String menuOption;
 		do {
-			System.out.println("	1.Add Contact");
+			System.out.println("    1.Add Contact");
 			System.out.println("	2.Edit Contact");
 			System.out.println("	3.Delete Contact");
 			System.out.println("	4.Show Contact");
-<<<<<<< HEAD
-=======
 			System.out.println("	5.Search Person Using Name");
 			System.out.println("	6.Search Person Using City");
 			System.out.println("	7.Count person in a city");
+			System.out.println("	8.Sorting by Name");
 
->>>>>>> UC10_City_count
 			menuOption = sc.nextLine();
 			switch (menuOption) {
 				case "1":
@@ -195,8 +189,6 @@ public class AddressBook {
 				case "4":
 					showContact();
 					break;
-<<<<<<< HEAD
-=======
 				case "5":
 					System.out.println("Enter First Name");
 					String firstname = sc.next();
@@ -212,7 +204,12 @@ public class AddressBook {
 					String citys = sc.next();
 					countByCity(citys);
 					break;
->>>>>>> UC10_City_count
+				case "8":
+					System.out.println("Enter First Name");
+					String fname = sc.next();
+					sortName(fname);
+					break;
+
 				default:
 					System.out.println("Invalid Input");
 			}
