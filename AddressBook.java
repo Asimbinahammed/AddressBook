@@ -165,14 +165,67 @@ public class AddressBook {
 	//
 =======
 	/*
-	UC10:Sort list by name
+	UC11:Sort list by name
 	input->list
 	output->sorted list
 	 */
 	public static void sortByName(){
 		AddressBook.sortBy(PersonInfo::getFirstName).forEach(System.out::println);
 	}
-	
+
+	/*
+	UC12:Sort list by city,state or zip
+	selecting sorting by which factor
+	 */
+	public static void sortByCityStateZip(){
+		System.out.println("    1.Sort by City ");
+		System.out.println("	2.Sort by State");
+		System.out.println("	3.Sort by Zip");
+		String menuOption;
+		menuOption = sc.nextLine();
+		switch (menuOption) {
+			case "1":
+				sortByCity();
+				break;
+			case "2":
+				sortByState();
+				break;
+			case "3":
+				sortByZip();
+				break;
+			default:
+				System.out.println("Invalid Input");
+		}
+	}
+
+	/*
+	UC12:Sort list by city
+	input->list
+	output->sorted list
+	 */
+	public static void sortByCity(){
+		AddressBook.sortBy(PersonInfo::getCity).forEach(System.out::println);
+	}
+
+	/*
+	UC12:Sort list by state
+	input->list
+	output->sorted list
+	 */
+	public static void sortByState(){
+		AddressBook.sortBy(PersonInfo::getState).forEach(System.out::println);
+	}
+
+	/*
+	UC12:Sort list by zip
+	input->list
+	output->sorted list
+	 */
+	public static void sortByZip(){
+		AddressBook.sortBy(PersonInfo::getZip).forEach(System.out::println);
+	}
+
+	//defining sorting from person info by comparing
 	public static List<PersonInfo> sortBy(Function<? super PersonInfo, ? extends String> key) {
 		return personInfo.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
 >>>>>>> UC11_sort_by_name
@@ -192,7 +245,11 @@ public class AddressBook {
 			System.out.println("	8.Sorting by Name");
 =======
 			System.out.println("	8.Sort by Person's name");
+<<<<<<< HEAD
 >>>>>>> UC11_sort_by_name
+=======
+			System.out.println("	9.Sort by city ,state or zip");
+>>>>>>> UC12_SortingByOthers
 
 			menuOption = sc.nextLine();
 			switch (menuOption) {
@@ -233,7 +290,13 @@ public class AddressBook {
 =======
 					sortByName();
 					break;
+<<<<<<< HEAD
 >>>>>>> UC11_sort_by_name
+=======
+				case "9":
+					sortByCityStateZip();
+					break;
+>>>>>>> UC12_SortingByOthers
 				default:
 					System.out.println("Invalid Input");
 			}
