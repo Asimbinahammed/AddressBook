@@ -5,6 +5,7 @@ package bridgelabz;
 
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -158,6 +159,19 @@ public class AddressBook {
         System.out.println("Totally "+total+ " contacts present in the AddressBook");
 	}
 
+	/*
+	UC10:Sort list by name
+	input->list
+	output->sorted list
+	 */
+	public static void sortByName(){
+		AddressBook.sortBy(PersonInfo::getFirstName).forEach(System.out::println);
+	}
+	
+	public static List<PersonInfo> sortBy(Function<? super PersonInfo, ? extends String> key) {
+		return personInfo.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+	}
+
 	public static void menu() {
 		String menuOption;
 		do {
@@ -168,6 +182,7 @@ public class AddressBook {
 			System.out.println("	5.Search Person Using Name");
 			System.out.println("	6.Search Person Using City");
 			System.out.println("	7.Count person in a city");
+			System.out.println("	8.Sort by Person's name");
 
 			menuOption = sc.nextLine();
 			switch (menuOption) {
@@ -197,6 +212,9 @@ public class AddressBook {
 					System.out.println("Enter City Name");
 					String citys = sc.next();
 					countByCity(citys);
+					break;
+				case "8":
+					sortByName();
 					break;
 				default:
 					System.out.println("Invalid Input");
