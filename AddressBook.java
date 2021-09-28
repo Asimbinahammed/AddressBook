@@ -156,14 +156,9 @@ public class AddressBook {
 				.filter(p -> p.getCity().equals(city))
 				.collect(Collectors.toList());
 		long total=Stream.of(listPerson).count();
-        System.out.println("Totally "+total+ " contacts present in the AddressBook");
+		System.out.println("Totally "+total+ " contacts present in the AddressBook");
 	}
 
-<<<<<<< HEAD
-	//UC11 Ability to sort name
-	public static void sortName(String name) {
-	//
-=======
 	/*
 	UC11:Sort list by name
 	input->list
@@ -228,7 +223,6 @@ public class AddressBook {
 	//defining sorting from person info by comparing
 	public static List<PersonInfo> sortBy(Function<? super PersonInfo, ? extends String> key) {
 		return personInfo.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
->>>>>>> UC11_sort_by_name
 	}
 
 	public static void menu() {
@@ -241,15 +235,8 @@ public class AddressBook {
 			System.out.println("	5.Search Person Using Name");
 			System.out.println("	6.Search Person Using City");
 			System.out.println("	7.Count person in a city");
-<<<<<<< HEAD
-			System.out.println("	8.Sorting by Name");
-=======
 			System.out.println("	8.Sort by Person's name");
-<<<<<<< HEAD
->>>>>>> UC11_sort_by_name
-=======
 			System.out.println("	9.Sort by city ,state or zip");
->>>>>>> UC12_SortingByOthers
 
 			menuOption = sc.nextLine();
 			switch (menuOption) {
@@ -281,22 +268,11 @@ public class AddressBook {
 					countByCity(citys);
 					break;
 				case "8":
-<<<<<<< HEAD
-					System.out.println("Enter First Name");
-					String fname = sc.next();
-					sortName(fname);
-					break;
-
-=======
 					sortByName();
 					break;
-<<<<<<< HEAD
->>>>>>> UC11_sort_by_name
-=======
 				case "9":
 					sortByCityStateZip();
 					break;
->>>>>>> UC12_SortingByOthers
 				default:
 					System.out.println("Invalid Input");
 			}
