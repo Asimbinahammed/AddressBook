@@ -4,6 +4,7 @@
 package bridgelabz;
 
 
+import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -16,7 +17,7 @@ public class AddressBook {
 	public static Map<String, List<PersonInfo>> hashmap = new HashMap<String, List<PersonInfo>>();
 
 	// Created a method for adding Contacts
-	public static void addContact() {
+	public static void addContact() throws IOException {
 		System.out.print("Enter Your First Name : ");
 		String firstName = sc.next();
 		System.out.print("Enter Your Last Name : ");
@@ -225,7 +226,7 @@ public class AddressBook {
 		return personInfo.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
 	}
 
-	public static void menu() {
+	public static void menu() throws IOException {
 		String menuOption;
 		do {
 			System.out.println("    1.Add Contact");
@@ -237,6 +238,8 @@ public class AddressBook {
 			System.out.println("	7.Count person in a city");
 			System.out.println("	8.Sort by Person's name");
 			System.out.println("	9.Sort by city ,state or zip");
+			System.out.println("	10.Read Address book");
+			System.out.println("	11.Write into Address book");
 
 			menuOption = sc.nextLine();
 			switch (menuOption) {
@@ -273,6 +276,12 @@ public class AddressBook {
 				case "9":
 					sortByCityStateZip();
 					break;
+				case "10":
+					AddressBookIO.readAddressBook();
+					break;
+				case "11":
+					AddressBookIO.writeAddressBook();
+					break;
 				default:
 					System.out.println("Invalid Input");
 			}
@@ -282,7 +291,7 @@ public class AddressBook {
 	}
 
 	// main method
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		AddressBook book = new AddressBook();
 		System.out.println("Welcome To AddressBook");
 		menu();
