@@ -162,16 +162,18 @@ public class AddressBook {
 
 	/*
 	UC11:Sort list by name
-	input->list
-	output->sorted list
+	return sorted list by first name
 	 */
 	public static void sortByName(){
-		AddressBook.sortBy(PersonInfo::getFirstName).forEach(System.out::println);
+		System.out.println("\nSorting Address Book based on First Name");
+		personInfo.stream();
+		personInfo.sort(Comparator.comparing(PersonInfo::getFirstName));
+		personInfo.forEach((PersonInfo contact) -> System.out.println(contact));
 	}
 
 	/*
 	UC12:Sort list by city,state or zip
-	selecting sorting by which factor
+	selecting sorting by city ,state or zip
 	 */
 	public static void sortByCityStateZip(){
 		System.out.println("    1.Sort by City ");
@@ -196,34 +198,35 @@ public class AddressBook {
 
 	/*
 	UC12:Sort list by city
-	input->list
 	output->sorted list
 	 */
 	public static void sortByCity(){
-		AddressBook.sortBy(PersonInfo::getCity).forEach(System.out::println);
+		System.out.println("\nSorting Address Book based on City Name");
+		personInfo.stream();
+		personInfo.sort(Comparator.comparing(PersonInfo::getCity));
+		personInfo.forEach((PersonInfo contact) -> System.out.println(contact));
 	}
 
 	/*
 	UC12:Sort list by state
-	input->list
 	output->sorted list
 	 */
 	public static void sortByState(){
-		AddressBook.sortBy(PersonInfo::getState).forEach(System.out::println);
+		System.out.println("\nSorting Address Book based on State Name");
+		personInfo.stream();
+		personInfo.sort(Comparator.comparing(PersonInfo::getState));
+		personInfo.forEach((PersonInfo contact) -> System.out.println(contact));
 	}
 
 	/*
 	UC12:Sort list by zip
-	input->list
 	output->sorted list
 	 */
 	public static void sortByZip(){
-		AddressBook.sortBy(PersonInfo::getZip).forEach(System.out::println);
-	}
-
-	//defining sorting from person info by comparing
-	public static List<PersonInfo> sortBy(Function<? super PersonInfo, ? extends String> key) {
-		return personInfo.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+		System.out.println("\nSorting Address Book based on zip Name");
+		personInfo.stream();
+		personInfo.sort(Comparator.comparing(PersonInfo::getZip));
+		personInfo.forEach((PersonInfo contact) -> System.out.println(contact));
 	}
 
 	public static void menu() throws IOException {
@@ -238,8 +241,8 @@ public class AddressBook {
 			System.out.println("	7.Count person in a city");
 			System.out.println("	8.Sort by Person's name");
 			System.out.println("	9.Sort by city ,state or zip");
-			System.out.println("	10.Read Address book");
-			System.out.println("	11.Write into Address book");
+			System.out.println("	10.Read or Write into file");
+
 
 			menuOption = sc.nextLine();
 			switch (menuOption) {
@@ -277,10 +280,7 @@ public class AddressBook {
 					sortByCityStateZip();
 					break;
 				case "10":
-					AddressBookIO.readAddressBook();
-					break;
-				case "11":
-					AddressBookIO.writeAddressBook();
+					AddressBookIO.select();
 					break;
 				default:
 					System.out.println("Invalid Input");

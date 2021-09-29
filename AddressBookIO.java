@@ -5,6 +5,25 @@ import java.nio.file.Files;
 import java.util.Scanner;
 
 public class AddressBookIO {
+    static Scanner sc=new Scanner(System.in);
+
+    public  static void select() throws IOException {
+        System.out.println("    1.Read from file ");
+        System.out.println("	2.Write into file");
+
+        String menuOption;
+        menuOption = sc.nextLine();
+        switch (menuOption) {
+            case "1":
+                readAddressBook();
+                break;
+            case "2":
+                writeAddressBook();
+                break;
+            default:
+                System.out.println("Invalid Input");
+        }
+    }
     public static void readAddressBook() throws IOException {
         String message;
         File file=new File("IOAddressBook.csv" +
@@ -25,7 +44,6 @@ public class AddressBookIO {
     }
 
     public static void writeAddressBook(){
-        Scanner sc=new Scanner(System.in);
         System.out.println("Writing into Persons contact");
         String userInput=sc.nextLine();
         File file=new File("IOAddressBook.csv");
