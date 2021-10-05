@@ -62,4 +62,21 @@ public class AddressBookIO {
 
     }
 
+    public static void writeAddressBook(PersonInfo person) {
+        System.out.println("Writing into Persons contact");
+        String userInput=sc.nextLine();
+        File file=new File("IOAddressBook.csv");
+        if(!file.exists()){
+            System.out.println("file doesnt exists");
+        }
+        try{
+            FileWriter fileWriter=new FileWriter(file,true);
+            BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
+            fileWriter.write(userInput);
+            fileWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -43,6 +43,7 @@ public class AddressBook {
 		for (PersonInfo personInfo2 : personInfo) {
 			System.out.println(personInfo2);
 		}
+		AddressBookIO.writeAddressBook(person);
 	}
 
 	//UC7 Ability to ensure there is no Duplicate Entry of the same Person
@@ -126,9 +127,9 @@ public class AddressBook {
 						System.out.println("Invalid Entry");
 
 				}
+				AddressBookIO.writeAddressBook((PersonInfo) personInfo);
 			}
 		}
-
 	}
 
 	//UC8 Ability to search Person in a City or State
@@ -241,8 +242,6 @@ public class AddressBook {
 			System.out.println("	7.Count person in a city");
 			System.out.println("	8.Sort by Person's name");
 			System.out.println("	9.Sort by city ,state or zip");
-			System.out.println("	10.Read or Write into file");
-
 
 			menuOption = sc.nextLine();
 			switch (menuOption) {
@@ -278,9 +277,6 @@ public class AddressBook {
 					break;
 				case "9":
 					sortByCityStateZip();
-					break;
-				case "10":
-					AddressBookIO.select();
 					break;
 				default:
 					System.out.println("Invalid Input");
